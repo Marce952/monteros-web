@@ -1,4 +1,4 @@
-import Card from '@/Components/Card'
+import Cards from '@/Components/Cards'
 import React from 'react'
 
 const page = () => {
@@ -17,7 +17,7 @@ const page = () => {
 
         <div className='w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 md:mt-10 lg:grid-cols-3 lg:mt-16 gap-8 p-4'>
                 {estatuas.map((estatua, i) => {
-                    return <Card
+                    return <Cards
                         key={i}
                         title={estatua.title}
                         text={estatua.text}

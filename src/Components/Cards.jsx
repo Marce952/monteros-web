@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const Card = (props) => {
+const Cards = (props) => {
     return (
         <div class="max-w-sm rounded overflow-hidden shadow-lg">
             <Link href={'/entidades/estatuas/informacion'}>
@@ -28,4 +28,4 @@ const Card = (props) => {
     )
 }
 
-export default Card
+export default Cards
