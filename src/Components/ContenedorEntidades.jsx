@@ -35,7 +35,16 @@ const ContenedorEntidades = () => {
     ]
 
     return (
-        <div className='w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 md:mt-10 lg:grid-cols-4 lg:mt-16 gap-8 p-4'>
+        <>
+    <div>
+        <h1>Bienvenido Turista</h1>
+
+        <p>
+            Por favor elige algun tema que te interese y podras ver una gran lista de puntos turisticos de nuestra <span>ciudad de monteros</span> junto con su ubicacion e informacion
+        </p>
+    </div>
+
+        <div className='w-full grid grid-cols-1 place-content-center sm:grid-cols-1 md:grid-cols-2 md:mt-10 lg:grid-cols-4 lg:mt-16 gap-8 p-4'>            
             {
                 entidades.map((entidad, i) => (
                     <Link href={entidad.href} key={i}>
@@ -59,6 +68,7 @@ const ContenedorEntidades = () => {
                 ))
             }
         </div >
+        </>
     )
 }
 
