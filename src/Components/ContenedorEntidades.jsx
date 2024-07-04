@@ -36,10 +36,12 @@ const ContenedorEntidades = () => {
 
     return (
         <>
-    <div>
-        <h1>Bienvenido Turista</h1>
-
-        <p>
+    <div className='w-full flex flex-col justify-center items-center'>
+        <div className='my-12'>
+        <h1 className='text-center text-6xl'>Bienvenido Turista!</h1>
+        <div className='w-full h-1 bg-gradient-to-r from-[#8E94F2] from-10% via-[#9FA0FF] via-30% via-[#BBADFF] via-30% to-[#DAB6FC] to-90% '></div>
+        </div>
+        <p className='w-9/12 text-center'>
             Por favor elige algun tema que te interese y podras ver una gran lista de puntos turisticos de nuestra <span>ciudad de monteros</span> junto con su ubicacion e informacion
         </p>
     </div>
