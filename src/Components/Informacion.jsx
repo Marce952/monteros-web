@@ -1,22 +1,35 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
+import axios from 'axios';
+import { Image } from '@nextui-org/react';
 
-const Informacion = () => {
+const Informacion = ({ id }) => {
+    console.log(id)
+
+    const [entidad, setEntidad] = useState([])
+
+    useEffect(() => {
+        axios.get(`/api/entidades/${id}`)
+            .then(resp => setEntidad(resp.data))
+    }, [])
+
+
     return (
         <div className="bg-white flex flex-col items-center w-full max-md:max-w-full">
             <div className="min-w-full px-32">
                 <div className='flex justify-center items-center w-full my-10'>
-                    <h1>Estatus de las madres</h1>
+                    <h1 className='text-4xl uppercase bold'>{entidad.nombre}</h1>
                 </div>
+                
                 <Card className="mt-0">
                     <CardBody className="grid gap-4">
-                        <div>
-                            <img
-                                className="h-auto w-full max-w-full rounded-lg md:h-[480px] object-contain cursor-pointer"
-                                alt=""
+                            <Image
+                                removeWrapper
+                                alt="Card background"
+                                className="w-full object-cover opacity-100"
+                                src={entidad.imagen_principal}
                             />
-                        </div>
                         {/* <div className="flex flex-row gap-5">
                             {data.imagenes && [data.imagen_principal, ...data.imagenes].map((imgelink, index) => (
                                 <div key={index}>
@@ -30,20 +43,12 @@ const Informacion = () => {
                             ))}
                         </div> */}
                     </CardBody>
-
-
                 </Card>
 
                 <Card className="mt-5 gap-8">
                     <CardBody className="grid gap-4">
                         <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet voluptatem tempora doloribus? Velit deserunt ducimus pariatur vel temporibus nihil, voluptatum amet qui nostrum veritatis repellat ad cum non suscipit dolores.
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni non maxime deleniti ipsam, magnam nemo quis molestiae, totam delectus voluptatem, at expedita sapiente ab alias nulla eos. Fugit, minima itaque.
-                            Minima ad aspernatur fuga nam maxime suscipit! Commodi recusandae modi consequuntur ducimus a quas dolorum est aut consectetur, quaerat, nam consequatur dolore. Harum corporis numquam sint, vitae vero rem dignissimos.
-                            Id rerum quis accusamus, earum fuga illum sed fugiat vitae blanditiis! At, quasi magnam quod doloribus harum atque ratione incidunt quia nihil inventore. Quasi optio hic cupiditate, voluptatum molestiae aliquid.
-                            Molestiae fuga error libero neque autem praesentium, exercitationem perferendis iure, suscipit distinctio ducimus odit mollitia tempora amet, alias nesciunt sequi quibusdam dolore dignissimos asperiores! Quaerat recusandae nam maiores aspernatur dicta.
-                            Eos quaerat quasi aliquid vero corporis consequatur. Porro, eius provident. Eveniet laborum enim sunt molestias vitae delectus libero quaerat omnis odit quibusdam doloribus incidunt a nemo impedit, sequi consectetur nulla.
+                            {entidad.descripcion}
                         </p>
                     </CardBody>
 
@@ -53,13 +58,7 @@ const Informacion = () => {
 
                     <CardBody className="grid gap-4">
                         <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet voluptatem tempora doloribus? Velit deserunt ducimus pariatur vel temporibus nihil, voluptatum amet qui nostrum veritatis repellat ad cum non suscipit dolores.
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni non maxime deleniti ipsam, magnam nemo quis molestiae, totam delectus voluptatem, at expedita sapiente ab alias nulla eos. Fugit, minima itaque.
-                            Minima ad aspernatur fuga nam maxime suscipit! Commodi recusandae modi consequuntur ducimus a quas dolorum est aut consectetur, quaerat, nam consequatur dolore. Harum corporis numquam sint, vitae vero rem dignissimos.
-                            Id rerum quis accusamus, earum fuga illum sed fugiat vitae blanditiis! At, quasi magnam quod doloribus harum atque ratione incidunt quia nihil inventore. Quasi optio hic cupiditate, voluptatum molestiae aliquid.
-                            Molestiae fuga error libero neque autem praesentium, exercitationem perferendis iure, suscipit distinctio ducimus odit mollitia tempora amet, alias nesciunt sequi quibusdam dolore dignissimos asperiores! Quaerat recusandae nam maiores aspernatur dicta.
-                            Eos quaerat quasi aliquid vero corporis consequatur. Porro, eius provident. Eveniet laborum enim sunt molestias vitae delectus libero quaerat omnis odit quibusdam doloribus incidunt a nemo impedit, sequi consectetur nulla.
+                            {entidad.texto_complementario}
                         </p>
                     </CardBody>
                 </Card>

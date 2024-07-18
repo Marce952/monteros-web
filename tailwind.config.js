@@ -10,7 +10,11 @@ module.exports = {
     './node_modules/@nextui-org/theme/dist/components/(button|snippet|code|input).js'
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'monteros-bg': "url('/img/Monteros.jpg')",
+      }
+    },
   },
   darkMode: "class",
   plugins: [nextui()],

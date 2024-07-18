@@ -1,10 +1,11 @@
 'use client'
-import { Button, Image, Input, Select, SelectItem } from '@nextui-org/react'
+import { uploadFile } from '@/firebase/config';
+import { Button, Image, Input, Select, SelectItem, Spinner } from '@nextui-org/react'
 import axios from 'axios'
 import React, { useState } from 'react'
+import { CiTrash } from "react-icons/ci";
 
 const page = () => {
-
   const [entidades, setEntidades] = useState({
     nombre: '',
     descripcion: '',
@@ -16,6 +17,10 @@ const page = () => {
     etiquetas: []
   })
 
+  const [newEntidad, setNewEntidad] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [loadingImage, setLoadingImage] = useState(false)
+
   const tipos = [
     { key: 'estatua', label: 'Estatua' },
     { key: 'iglesia', label: 'Iglesia' },
@@ -24,7 +29,7 @@ const page = () => {
   ]
 
 
-  const handleChange = ({ target }) => {  
+  const handleChange = ({ target }) => {
     const { name, value } = target;
 
     setEntidades(prev => ({
@@ -33,9 +38,52 @@ const page = () => {
     }));
   };
 
+  const handleSubmitImage = async ({ target }) => {
+    setLoadingImage(true)
+    const { name, files } = target
+    if (!files[0]) return console.log("Ocurrio un error, intenta de nuevo!");
+    try {
+      const url = await uploadFile(files[0])
+      setLoadingImage(false)
+      if (url) {
+        if (name === 'imagenes') {
+          const images = entidades.imagenes
+          images.push(url)
+          setEntidades(prev => ({ ...prev, [name]: images }))
+        } else {
+          setEntidades(prev => ({ ...prev, [name]: url }))
+        }
+        console.log("Imagen cargada con exito!");
+      } else {
+        console.log("Ocurrio un error, intenta de nuevo!");
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  };
+
+  const emptyEntidades = () => {
+    setEntidades({
+      nombre: '',
+      descripcion: '',
+      etiquetas: [''],
+      tipo: '',
+      imagenes: '',
+      imagen_principal: [''],
+      texto_complementario: '',
+      ubicacion: '',
+    })
+  }
+
   const post = async () => {
+    setLoading(true)
     try {
       await axios.post('/api/entidades', entidades)
+        .then(() => {
+          setNewEntidad(true)
+          emptyEntidades()
+          setLoading(false)
+        })
     } catch (error) {
       console.log(error)
     }
@@ -62,7 +110,7 @@ const page = () => {
                         {
                           entidades?.imagen_principal &&
                           <div className="flex absolute top-0 left-0 h-full w-full  z-50 items-center justify-center hover:bg-red-500 hover:bg-opacity-75 transition-all cursor-pointer">
-                            <div className="flex text-4xl "><FaRegTrashAlt /></div>
+                            {/* <div className="flex text-4xl "><FaRegTrashAlt /></div> */}
                           </div>
                         }
                         <Image
@@ -85,13 +133,17 @@ const page = () => {
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click para cargar una imagen</span></p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
                           </div>
-                          <input id="dropzone-file" type="file" className="hidden" name="imagen_principal" onChange={''} />
+                          <input id="dropzone-file" type="file" className="hidden" name="imagen_principal" onChange={handleSubmitImage} />
                         </label>
                       </div>
 
                     </div>
                 }
+
+                {loadingImage && <Spinner color='warning' label='Loading image...' />}
+
               </div>
+
 
               <div className="flex flex-col">
                 <h1>Mas imagenes</h1>
@@ -117,7 +169,7 @@ const page = () => {
                 </div>
               </div>
 
-              <div className="relative flex items-center justify-center  m-3">
+              {/* <div className="relative flex items-center justify-center  m-3">
 
                 <div className="flex items-center justify-center w-full">
                   <label for="dropzone-file" className="flex flex-col items-center justify-center px-5 w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -128,11 +180,12 @@ const page = () => {
                       <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click para cargar una imagen</span></p>
                       <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
                     </div>
-                    <input id="dropzone-file" type="file" className="hidden" name="imagenes" onChange={''} />
+                    <input id="dropzone-file" type="file" className="hidden" name="imagen_principal" onChange={handleSubmitImage} />
                   </label>
                 </div>
-              </div>
+              </div> */}
               <div className="m-auto">
+
                 {
                   entidades?.estado === 'Disponible' ?
                     (
@@ -166,6 +219,8 @@ const page = () => {
         </div>
 
         {/* Entidades */}
+
+        {newEntidad && <p className='text-red-500'>Se a creado con exito</p>}
 
         <div className="w-full">
           <div className="flex flex-row flex-wrap gap-5 w-full pb-10">
@@ -255,8 +310,23 @@ const page = () => {
             </div>
 
 
-            <div className="flex items-end w-full justify-end">
-              <Button onClick={post}>Guardar cambios</Button>
+            <div className="flex items-end w-full justify-end gap-8">
+              <Button onClick={emptyEntidades} variant='bordered'>
+                <CiTrash />
+              </Button>
+              {
+                loading ? <Button
+                  isLoading
+                  color="secondary"
+                  spinner={<svg className="animate-spin h-5 w-5 text-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor" />
+                  </svg>
+                  }
+                >
+                  Loading
+                </Button> : <Button onClick={post} color='danger'>Guardar cambios</Button>
+              }
             </div>
           </div>
         </div>

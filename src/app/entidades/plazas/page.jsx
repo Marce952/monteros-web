@@ -5,32 +5,32 @@ import React, { useEffect, useState } from 'react'
 
 const page = () => {
 
-    const [estatuasEntidad, setEstatuasEntidad] = useState([])
+    const [plazaEntidad, setPlazaEntidad] = useState([])
 
     useEffect(() => {
         axios.get('/api/entidades')
         .then(resp => {
-            const estatuas = resp.data.entidades.filter(entidad => entidad.tipo.toLowerCase() === 'estatua');
-            setEstatuasEntidad(estatuas);
+            const plaza = resp.data.entidades.filter(entidad => entidad.tipo.toLowerCase() === 'plaza');
+            setPlazaEntidad(plaza);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         })
-        console.log(estatuasEntidad)
+        console.log(plazaEntidad)
       
     }, [])
 
   return (
     <div>
         <div className={`h-12 w-full bg-green-500 flex items-center`}>
-            <p className='text-2xl ml-2 text-white'>Estatuas</p>
+            <p className='text-2xl ml-2 text-white'>Plazas</p>
         </div>
 
         <div className='w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 md:mt-10 lg:grid-cols-3 lg:mt-16 gap-8 p-4'>
-                {estatuasEntidad.map((estatua, i) => {
+                {plazaEntidad.map((plaza, i) => {
                     return <Cards
                         key={i}
-                        params={estatua}
+                        params={plaza}
                     />
                 })}
             </div>
