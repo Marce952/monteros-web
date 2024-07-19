@@ -1,31 +1,36 @@
 'use client'
+import Cards from '@/Components/Cards'
 import { Button, Select, SelectItem } from '@nextui-org/react'
 import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 const page = () => {
-    const [entidades, setEntidades] = useState('')
+    const [entidades, setEntidades] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('/api/entidades')
-        .then(resp => {setEntidades(resp.data.entidades[0].nombre)})
-    },[])
+            .then(resp => { setEntidades(resp.data.entidades) })
+    }, [])
     return (
         <div className='w-full h-full p-10'>
             <div className='grid grid-cols-4 gap-4'>
                 <Link href={'/dashboard/crear'}>
-                <div className='w-[20rem] h-[20rem] bg-red-500 rounded-md flex justify-center items-center'>
-                    <Button>Crear</Button>
-                </div>
+                    <div className='w-[20rem] h-[20rem] bg-red-500 rounded-md flex justify-center items-center'>
+                        <Button>Crear</Button>
+                    </div>
                 </Link>
 
-                <div>
-                    <div className='w-[20rem] h-[20rem] bg-emerald-500 rounded-md flex justify-center items-center'>
-                        {entidades}
-                        <Button>Ver</Button>
-                    </div>
-                </div>
+                {
+                    entidades.map((entidad, i) => (
+                        <Link href={`/dashboard/crear/${entidad.id}`}>
+                            <Cards
+                                key={i}
+                                params={entidad}
+                            />
+                        </Link>
+                    ))
+                }
             </div>
         </div>
     )

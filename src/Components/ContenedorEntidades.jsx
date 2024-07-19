@@ -43,7 +43,7 @@ const ContenedorEntidades = () => {
         <>
             <div className='w-full flex flex-col justify-center items-center'>
                 <div className='my-12'>
-                    <h1 className='text-center text-6xl underline decoration-green-500'>Bienvenido Turista!</h1>
+                    <h1 className='text-center text-6xl underline decoration-green-500 font-bold'>Bienvenido Turista!</h1>
                     {/* <div className='w-full h-1 bg-gradient-to-r from-[#8E94F2] from-10% via-[#9FA0FF] via-30% via-[#BBADFF] via-30% to-[#DAB6FC] to-90% '></div> */}
                 </div>
                 <p className='w-9/12 text-center'>

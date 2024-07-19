@@ -18,7 +18,7 @@ export default function Home() {
 
         <div className="flex flex-col items-center absolute top-40 right-40 text-right max-sm:top-30 max-sm:right-0 max-sm:left-0 max-sm:w-full max-sm:text-center">
           <div>
-            <h1 className="text-white text-8xl max-sm:text-4xl">Monteros!</h1>
+            <h1 className="text-white text-8xl max-sm:text-4xl font-bold">Monteros!</h1>
             <p className="text-white text-4xl mt-2 max-sm:text-2xl">Fortaleza del folclore</p>
           </div>
 
@@ -36,10 +36,10 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="flex items-center justify-center flex-col w-full md:justify-around md:flex-row md:gap-4">
+      <section className="flex items-center justify-center flex-col w-full md:flex-wrap md:justify-around md:flex-row md:gap-4 md:my-8">
         {
           actividades.map((actividad, i) => (
-            <Card className="py-4" key={i}>
+            <Card className="py-4 mx-auto" key={i}>
               <CardHeader className="pb-0 pt-2 flex-col items-start">
                 <p className="text-tiny uppercase font-bold"></p>
                 <small className="text-default-500">{actividad.categoria}</small>
@@ -59,13 +59,10 @@ export default function Home() {
           ))
         }
       </section>
-
-        <div class="absolute z-20 border-[16px] border-green-600 h-48 w-48 rounded-full top-[47rem] -left-24 flex justify-center items-center">
-        </div>
       
       <section className="w-full bg-green-400 py-8 relative">
         <div className="flex justify-center items-center w-full mb-20">
-          <h2 className="text-6xl text-center">Razones para venir a Monteros</h2>
+          <h2 className="text-6xl text-center font-bold">Razones para venir a Monteros</h2>
         </div>
 
         <div className="w-full px-8 my-8 flex flex-col justify-center items-center gap-8 text-center md:flex-row md:gap-4 md:text-left">
@@ -129,7 +126,7 @@ export default function Home() {
       </div>
 
       <section className="w-full  bg-black flex flex-col justify-evenly items-center gap-28 py-8 md:min-h-96">
-        <h1 className="text-white text-3xl text-center md:text-6xl">
+        <h1 className="text-white text-3xl text-center font-bold md:text-6xl">
           Monteros de la patria fortaleza del folclore
         </h1>
 
