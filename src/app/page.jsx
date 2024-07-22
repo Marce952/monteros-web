@@ -1,17 +1,20 @@
 
 import Footer from "@/Components/Footer";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import Link from "next/link";
+import { PiTreeFill } from "react-icons/pi";
+import { LiaChurchSolid } from "react-icons/lia";
 
 export default function Home() {
   const actividades = [
     { titulo: 'Trepada al indio', categoria: 'Deporte', imagen: '/img/El indio.jpg' },
     { titulo: 'Cine Marconi', categoria: 'Entretenimiento', imagen: '/img/cine marconi.jpg' },
-    { titulo: 'Festival de folclore', categoria: 'Musica', imagen: '/img/festival del folclore.jpg' },
+    { titulo: 'Festival de folclore', categoria: 'Cultura', imagen: '/img/festival del folclore.jpg' },
   ]
 
   return (
     <main className="w-full h-full relative overflow-hidden">
-      <header className="w-full h-[35rem] bg-[url('/img/Monteros2.jpg')] bg-cover bg-center z-0">
+      <header className="w-full h-[35rem] bg-[url('/img/Monteros3.jpg')] bg-cover bg-center z-0">
         <div className="w-full h-full bg-stone-950 opacity-50 z-0 relative">
         </div>
         <nav></nav>
@@ -23,9 +26,11 @@ export default function Home() {
           </div>
 
           <div className="flex gap-4 w-full mt-8 text-lg max-sm:flex-col max-sm:items-center">
-            <button className="bg-green-400 p-2 text-white w-6/12 max-sm:p-1">
-              Conoce más
-            </button>
+            <Link href='#conoce-mas' className="w-6/12">
+              <button className="bg-green-400 p-2 text-white w-full max-sm:p-1 hover:bg-green-700 duration-500" >
+                Conoce más
+              </button>
+            </Link>
 
             <div className="text-white underline w-6/12 flex justify-center max-sm:w-full">
               <a href="/entidades">
@@ -36,7 +41,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="flex items-center justify-center flex-col w-full md:flex-wrap md:justify-around md:flex-row md:gap-4 md:my-8">
+      <section className="flex items-center justify-center flex-col w-full md:flex-wrap md:justify-around md:flex-row md:gap-4 md:my-8" id="conoce-mas">
         {
           actividades.map((actividad, i) => (
             <Card className="py-4 mx-auto" key={i}>
@@ -59,8 +64,60 @@ export default function Home() {
           ))
         }
       </section>
-      
-      <section className="w-full bg-green-400 py-8 relative">
+
+      <section className="w-full my-2 gap-8 grid grid-cols-1 md:grid-cols-3">
+        <article className="bg-green-500 min-h-72 text-white p-4 gap-8 flex flex-col items-center rounded-r-md md:col-span-2">
+          <div className="">
+            <Image
+              alt="Card background"
+              className="object-cover rounded-xl opacity-1 h-48"
+              src={"/img/festival del folclore 2.jpg"}
+            />
+          </div>
+          <div className="w-full text-center md:flex md:flex-col md:justify-center md:text-left">
+            <h5>Cultura</h5>
+            <p className="text-2xl">
+              El Festival de Folclore es el evento principal de Monteros, celebrado la segunda semana de octubre. Invitados destacados incluyen a El Chaqueño Palavecino, Sergio Galleguillo, Los Manseros Santiagueños, Los Tekis, entre otros.
+            </p>
+          </div>
+        </article>
+
+        <article className="bg-green-500 min-h-72 text-white p-4 gap-8 flex flex-col items-center w-full md:rounded-l-md md:col-start-2 md:col-end-4">
+          <div className="">
+            <Image
+              alt="Card background"
+              className="object-cover rounded-xl opacity-1 h-48"
+              src={"/img/festival del folclore 2.jpg"}
+            />
+          </div>
+          <div className="w-full text-center md:flex md:flex-col md:justify-center md:text-left">
+            <h5>Cultura</h5>
+            <p className="text-2xl">
+              El Festival de Folclore es el evento principal de Monteros, celebrado la segunda semana de octubre. Invitados destacados incluyen a El Chaqueño Palavecino, Sergio Galleguillo, Los Manseros Santiagueños, Los Tekis, entre otros.
+            </p>
+          </div>
+        </article>
+
+        <article className="bg-green-500 min-h-72 text-white p-4 gap-8 flex flex-col items-center md:rounded-r-md md:col-span-2">
+          <div className="">
+            <Image
+              alt="Card background"
+              className="object-cover rounded-xl opacity-1 h-48"
+              src={"/img/festival del folclore 2.jpg"}
+            />
+          </div>
+          <div className="w-full text-center md:flex md:flex-col md:justify-center md:text-left">
+            <h5>Cultura</h5>
+            <p className="text-2xl">
+              El Festival de Folclore es el evento principal de Monteros, celebrado la segunda semana de octubre. Invitados destacados incluyen a El Chaqueño Palavecino, Sergio Galleguillo, Los Manseros Santiagueños, Los Tekis, entre otros.
+            </p>
+          </div>
+        </article>
+      </section>
+
+
+
+      <section className="w-full bg-green-400 py-8 relative hidden">
         <div className="flex justify-center items-center w-full mb-20">
           <h2 className="text-6xl text-center font-bold">Razones para venir a Monteros</h2>
         </div>
@@ -78,8 +135,7 @@ export default function Home() {
           <div className="w-full md:flex md:flex-col md:justify-center">
             <h5>Cultura</h5>
             <p className="text-2xl">
-              El festival de folclore es el evento principal de la ciudad de monteros. El mismo se celebra los dias la segunda semana del mes de octubre.
-              Parte de nuestros invitados son: El chaqueño palavecino, Sergio Gallegillo, Los manseros santiagueños, Los tekis y muchas más
+              El Festival de Folclore es el evento principal de Monteros, celebrado la segunda semana de octubre. Invitados destacados incluyen a El Chaqueño Palavecino, Sergio Galleguillo, Los Manseros Santiagueños, Los Tekis, entre otros.
             </p>
           </div>
         </div>
@@ -97,7 +153,7 @@ export default function Home() {
           <div className="w-full md:flex md:flex-col md:justify-center">
             <h5>Entretenimiento</h5>
             <p className="text-2xl">
-              La feria de artesanias es sin duda de los eventos más elegidos por los ciudadanos, el evento es celebrado todos los años en las vacaciones de invierno
+              La Feria de Artesanías, uno de los eventos más populares, se celebra cada año durante las vacaciones de invierno.
             </p>
           </div>
         </div>
@@ -115,17 +171,22 @@ export default function Home() {
           <div className="w-full md:flex md:flex-col md:justify-center">
             <h5>Gastronomía</h5>
             <p className="text-2xl">
-              Los bares, restaurantes y cervecerias locales tienen una seleccion de alimentos y bebidas de altisima caldiad y sabor.
+              Los bares, restaurantes y cervecerías locales ofrecen una selección de alimentos y bebidas de alta calidad y sabor.
             </p>
           </div>
         </div>
 
       </section>
 
-      <div class="z-20 absolute border-[16px] border-green-600 -right-20 bottom-[54rem] h-48 w-48 rounded-full flex justify-center items-center">
-      </div>
+      <section className="w-full  bg-black flex flex-col justify-evenly items-center gap-28 py-8 md:min-h-96 relative">
+        <div className="absolute top-50 -left-20 rotate-45">
+          <PiTreeFill className="text-green-300 text-xl md:text-[15rem] opacity-30" />
+        </div>
 
-      <section className="w-full  bg-black flex flex-col justify-evenly items-center gap-28 py-8 md:min-h-96">
+        <div className="absolute top-50 -right-20 -rotate-45">
+          <LiaChurchSolid className="text-green-300 text-xl md:text-[15rem] opacity-30" />
+        </div>
+
         <h1 className="text-white text-3xl text-center font-bold md:text-6xl">
           Monteros de la patria fortaleza del folclore
         </h1>
