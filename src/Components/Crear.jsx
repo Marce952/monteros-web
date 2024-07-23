@@ -1,6 +1,6 @@
 'use client'
 import { uploadFile } from '@/firebase/config';
-import { Button, Image, Input, Select, SelectItem, Spinner } from '@nextui-org/react'
+import { Button, Image, Input, Select, SelectItem, Spinner, Textarea } from '@nextui-org/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { CiTrash } from "react-icons/ci";
@@ -26,7 +26,11 @@ const Crear = ({ id }) => {
         { key: 'estatua', label: 'Estatua' },
         { key: 'iglesia', label: 'Iglesia' },
         { key: 'plaza', label: 'Plaza' },
-        { key: 'escuela', label: 'Escuela' }
+        { key: 'escuela', label: 'Escuela' },
+        { key: 'deporte', label: 'Deporte' },
+        { key: 'entretenimiento', label: 'Entretenimiento' },
+        { key: 'cultura', label: 'Cultura' },
+        { key: 'otro', label: 'Otro' }
     ]
 
     useEffect(() => {
@@ -90,20 +94,20 @@ const Crear = ({ id }) => {
     const handleSubmit = async () => {
         setLoading(true)
         try {
-            if(id){
+            if (id) {
                 await axios.put(`/api/entidades/${id}`, entidades)
-                .then(() => {
-                    setUpdateEntidad(true)
-                    setLoading(false)
-                })
-                .catch(error => console.log(error))
-            }else{
+                    .then(() => {
+                        setUpdateEntidad(true)
+                        setLoading(false)
+                    })
+                    .catch(error => console.log(error))
+            } else {
                 await axios.post('/api/entidades', entidades)
-                .then(() => {
-                    setNewEntidad(true)
-                    emptyEntidades()
-                    setLoading(false)
-                })
+                    .then(() => {
+                        setNewEntidad(true)
+                        emptyEntidades()
+                        setLoading(false)
+                    })
             }
         } catch (error) {
             console.log(error)
@@ -267,11 +271,11 @@ const Crear = ({ id }) => {
                                     onChange={handleChange}
                                 />
 
-                                <Input
+                                <Textarea
+                                    labelPlacement='outside'
                                     type="text"
-                                    label="Descripcion"
                                     variant="bordered"
-                                    defaultValue=""
+                                    placeholder='Descripcion'
                                     isInvalid={false}
                                     name="descripcion"
                                     onChange={handleChange}
@@ -280,9 +284,9 @@ const Crear = ({ id }) => {
                             </div>
 
                             <div className="flex flex-row gap-5">
-                                <Input
+                                <Textarea
                                     type="text"
-                                    label="Texto Complementario"
+                                    placeholder="Texto Complementario"
                                     variant="bordered"
                                     isInvalid={false}
                                     name="texto_complementario"
@@ -306,12 +310,12 @@ const Crear = ({ id }) => {
                             <div className="flex flex-row gap-5">
                                 <Select
                                     variant='bordered'
-                                    label="Selecciona el tipo"
+                                    placeholder='Selecciona el tipo'
                                     name='tipo'
                                     value={entidades?.tipo}
                                     onChange={handleChange}
                                 >
-                                    {tipos.map((tipo, i) => (
+                                    {tipos.map((tipo) => (
                                         <SelectItem key={tipo.key}>
                                             {tipo.label}
                                         </SelectItem>

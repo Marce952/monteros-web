@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
 
-const Cards = ({params}) => {
+const Cards = ({params, link}) => {
     console.log(params)
     return (
         <div class="max-w-sm rounded overflow-hidden shadow-lg">
-            <Link href={`/entidades/${params.id}`}>
+            <Link href={link ? link : `/entidades/${params.id}`}>
                 <img
                     loading="lazy"
                     src={params.imagen_principal || 'https://images.unsplash.com/photo-1601887389937-0b02c26b602c?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}

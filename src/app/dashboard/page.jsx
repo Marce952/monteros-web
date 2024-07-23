@@ -23,12 +23,11 @@ const page = () => {
 
                 {
                     entidades.map((entidad, i) => (
-                        <Link href={`/dashboard/crear/${entidad.id}`}>
-                            <Cards
-                                key={i}
-                                params={entidad}
-                            />
-                        </Link>
+                        <Cards
+                            key={i}
+                            params={entidad}
+                            link={`/dashboard/crear/${entidad.id}`}
+                        />
                     ))
                 }
             </div>
