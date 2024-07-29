@@ -5,6 +5,7 @@ import React from 'react'
 import { GiGreekSphinx } from "react-icons/gi";
 import { LuChurch, LuSchool2 } from "react-icons/lu";
 import { PiParkDuotone } from "react-icons/pi";
+import NavBar from './Navbar';
 
 const ContenedorEntidades = () => {
 
@@ -42,7 +43,8 @@ const ContenedorEntidades = () => {
     return (
         <>
             <div className='w-full flex flex-col justify-center items-center'>
-                <div className='my-12'>
+                <NavBar />
+                <div className='mt-20 mb-12'>
                     <h1 className='text-center text-6xl underline decoration-green-500 font-bold'>Bienvenido Turista!</h1>
                     {/* <div className='w-full h-1 bg-gradient-to-r from-[#8E94F2] from-10% via-[#9FA0FF] via-30% via-[#BBADFF] via-30% to-[#DAB6FC] to-90% '></div> */}
                 </div>
@@ -67,7 +69,7 @@ const ContenedorEntidades = () => {
                                     src={entidad.image}
                                 />
                             </Card>
-                            
+
                         </Link>
                     ))
                 }

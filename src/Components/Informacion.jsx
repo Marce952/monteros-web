@@ -4,39 +4,41 @@ import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import axios from 'axios';
 import { Image, Skeleton } from '@nextui-org/react';
 import Footer from './Footer';
+import NavBar from './Navbar';
 
 const Informacion = ({ id }) => {
     console.log(id)
 
     const [entidad, setEntidad] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         setLoading(true)
         axios.get(`/api/entidades/${id}`)
             .then(resp => {
                 setEntidad(resp.data)
-                setLoading(!loading)
+                setLoading(false)
             })
     }, [])
 
 
     return (
         <div className="bg-white flex flex-col items-center w-full max-md:max-w-full">
+            <NavBar />
             <div className="min-w-full px-32">
-                <div className='flex justify-center items-center w-full my-10'>
+                <div className='flex justify-center items-center w-full mt-24 mb-12'>
                     <h1 className='text-4xl uppercase font-bold'>{entidad.nombre}</h1>
                 </div>
 
-                <Card className="mt-0">
-                    <CardBody className="grid gap-4">
+                <Card className="mt-0 space-y-5">
+                        <CardBody className="grid gap-4">
                             <Image
                                 removeWrapper
-                                alt="Card background"
+                                alt="Foto principal"
                                 className="w-full object-cover opacity-100 h-96"
                                 src={entidad.imagen_principal}
                             />
-                        {/* <div className="flex flex-row gap-5">
+                            {/* <div className="flex flex-row gap-5">
                             {data.imagenes && [data.imagen_principal, ...data.imagenes].map((imgelink, index) => (
                                 <div key={index}>
                                     <img
@@ -48,7 +50,7 @@ const Informacion = ({ id }) => {
                                 </div>
                             ))}
                         </div> */}
-                    </CardBody>
+                        </CardBody>
                 </Card>
 
                 <Card className="mb-24 mt-12 gap-8">

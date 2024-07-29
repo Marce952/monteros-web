@@ -5,6 +5,7 @@ import { Card, CardHeader, CardBody, Image, link } from "@nextui-org/react";
 import Link from "next/link";
 import { PiTreeFill } from "react-icons/pi";
 import { LiaChurchSolid } from "react-icons/lia";
+import NavBar from "@/Components/Navbar";
 
 export default function Home() {
   const actividades = [
@@ -39,7 +40,7 @@ export default function Home() {
       <header className="w-full h-[35rem] bg-[url('/img/Monteros3.jpg')] bg-cover bg-center z-0">
         <div className="w-full h-full bg-stone-950 opacity-50 z-0 relative">
         </div>
-        <nav></nav>
+        <NavBar />
 
         <div className="flex flex-col items-center absolute top-40 right-40 text-right max-sm:top-30 max-sm:right-0 max-sm:left-0 max-sm:w-full max-sm:text-center">
           <div>
@@ -89,7 +90,7 @@ export default function Home() {
         }
       </section>
 
-      <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center" id="razones">
         <h1 className="text-3xl text-center font-bold md:text-6xl my-6">Razones para conocer Monteros</h1>
       </div>
 
