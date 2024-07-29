@@ -10,7 +10,7 @@ export default function Home() {
   const actividades = [
     { titulo: 'Trepada al indio', categoria: 'Deporte', imagen: '/img/El indio.jpg', link: '/entidades/7' },
     { titulo: 'Cine Marconi', categoria: 'Entretenimiento', imagen: '/img/cine marconi.jpg', link: '/entidades/8' },
-    { titulo: 'Festival de folclore', categoria: 'Cultura', imagen: '/img/festival del folclore.jpg', link: '#' },
+    { titulo: 'Festival de folclore', categoria: 'Cultura', imagen: '/img/festival del folclore.jpg', link: '/entidades/9' },
   ]
 
   const razonesConocerMonteros = [

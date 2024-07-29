@@ -58,8 +58,8 @@ const Informacion = ({ id }) => {
                         </p>
                     </CardBody>
 
-                    <CardBody className="grid gap-4 mt-5">
-                        <iframe src={`https://www.google.com/maps/embed?pb=${entidad.ubicacion != '' ? entidad.ubicacion : '1m14!1m12!1m3!1d443.71489016576317!2d-65.49706181865893!3d-27.165126288979327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1719847342709!5m2!1ses-419!2sar'}`} className='w-full h-9/12' allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <CardBody className="grid gap-4 mt-5 h-[13rem]">
+                        <iframe src={`https://www.google.com/maps/embed?pb=${entidad.ubicacion != '' ? entidad.ubicacion : '1m14!1m12!1m3!1d443.71489016576317!2d-65.49706181865893!3d-27.165126288979327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1719847342709!5m2!1ses-419!2sar'}`} className='w-full h-full' allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </CardBody>
 
                     <CardBody className="grid gap-4">
