@@ -8,7 +8,7 @@ const NavBar = () => {
     const toggleMenu = () => setOpenMenu(!openMenu);
 
     return (
-        <nav className="border-gray-200 z-50 w-full bg-white bg-opacity-40 fixed left-0 top-0 max-h-20 max-lg:flex-wrap max-lg:max-w-full">
+        <nav className="border-gray-200 z-50 w-full bg-white bg-opacity-40 fixed left-0 top-0 max-h-20 min-h-24 max-lg:flex-wrap max-lg:max-w-full">
             <div className="max-w-screen-xl w-full mx-auto flex items-center justify-between p-2 lg:px-0 backdrop-blur-sm">
                 <a href="/" className="flex items-center">
                     <span className="ml-3 self-center text-xl max-lg:text-xl max-md:hidden font-semibold whitespace-nowrap text-black">
@@ -47,13 +47,13 @@ const NavBar = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="/entidades" className="block py-2 px-3 lg:p-0 text-black">
-                                Turistea
+                            <a href="#footer" className="block py-2 px-3 lg:p-0 text-black">
+                                Contáctanos
                             </a>
                         </li>
                         <li>
-                            <a href="#footer" className="block py-2 px-3 lg:p-0 text-black">
-                                Contáctanos
+                            <a href="/entidades" className="block py-2 px-3 lg:p-0 text-black">
+                                Turistea
                             </a>
                         </li>
                     </ul>
@@ -67,13 +67,13 @@ const NavBar = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="/entidades" className="block py-2 px-3 lg:p-0 text-black">
-                                Turistea
+                            <a href="#footer" className="block py-2 px-3 lg:p-0 text-black">
+                                Contáctanos
                             </a>
                         </li>
                         <li>
-                            <a href="#footer" className="block py-2 px-3 lg:p-0 text-black">
-                                Contáctanos
+                            <a href="/entidades" className="block py-2 px-3 lg:p-0 text-black">
+                                Turistea
                             </a>
                         </li>
                     </ul>
