@@ -24,7 +24,7 @@ const Informacion = ({ id }) => {
 
     return (
         <div className="bg-white flex flex-col items-center w-full max-md:max-w-full">
-            <NavBar />
+            {/* <NavBar /> */}
             <div className="min-w-full px-32">
                 <div className='flex justify-center items-center w-full mt-24 mb-12'>
                     <h1 className='text-4xl uppercase font-bold'>{entidad.nombre}</h1>

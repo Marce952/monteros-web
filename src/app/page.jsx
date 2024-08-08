@@ -37,10 +37,10 @@ export default function Home() {
 
   return (
     <main className="w-full h-full relative overflow-hidden">
+        {/* <NavBar /> */}
       <header className="w-full h-[35rem] bg-[url('/img/Monteros3.jpg')] bg-cover bg-center z-0">
         <div className="w-full h-full bg-stone-950 opacity-50 z-0 relative">
         </div>
-        <NavBar />
 
         <div className="flex flex-col items-center absolute top-40 right-40 text-right max-sm:top-30 max-sm:right-0 max-sm:left-0 max-sm:w-full max-sm:text-center">
           <div>
