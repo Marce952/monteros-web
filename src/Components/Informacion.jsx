@@ -4,7 +4,6 @@ import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import axios from 'axios';
 import { Image, Skeleton } from '@nextui-org/react';
 import Footer from './Footer';
-import NavBar from './Navbar';
 
 const Informacion = ({ id }) => {
     console.log(id)
@@ -24,7 +23,6 @@ const Informacion = ({ id }) => {
 
     return (
         <div className="bg-white flex flex-col items-center w-full max-md:max-w-full">
-            {/* <NavBar /> */}
             <div className="min-w-full px-32">
                 <div className='flex justify-center items-center w-full mt-24 mb-12'>
                     <h1 className='text-4xl uppercase font-bold'>{entidad.nombre}</h1>
