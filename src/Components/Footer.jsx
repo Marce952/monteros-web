@@ -19,7 +19,7 @@ const Footer = () => {
     ]
 
     return (
-        <footer className="bg-black text-white w-full min-h-96" id="footer">
+        <div className="bg-black text-white w-full min-h-96" id="footer">
             <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-green-500 py-7">
                 <h1 className="text-2xl md:mb-0 mb-6 lg-leading-normal font-semibold md:w-2/5 text-black">
                     <span className="underline">DevSoul</span>
@@ -62,7 +62,7 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
-        </footer>
+        </div>
     )
 }
 export default Footer
