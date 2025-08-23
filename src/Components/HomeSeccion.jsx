@@ -22,9 +22,14 @@ const HomeSeccion = () => {
           Descubre la magia de nuestra ciudad tucumana, donde la tradición, la cultura y la historia se encuentran
           en cada rincón. Un lugar lleno de festivales, gastronomía única y paisajes inolvidables.
         </p>
-        <button className="bg-[var(--primary)] hover:bg-[var(primary/90)] text-primary-foreground px-8 py-3 rounded-lg transition-colors">
-          Explorar Monteros
-        </button>
+        <div className='flex gap-4 justify-center items-center'>
+          <button className="bg-[var(--primary)] hover:bg-[var(primary/90)] text-primary-foreground px-8 py-3 rounded-lg transition-colors">
+            Explorar Monteros
+          </button>
+          <a className='underline cursor-pointer' href='/entidades'>
+            Conoces más
+          </a>
+        </div>
       </div>
     </section>
   )
