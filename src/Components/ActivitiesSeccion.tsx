@@ -1,6 +1,7 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import React from 'react';
+import SectionHeading from './SectionHeading';
 
 export default function ActivitiesSection() {
   const activities = [
@@ -25,36 +26,36 @@ export default function ActivitiesSection() {
   ];
 
   return (
-    <section className="py-20 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-4 text-black">
-            Eventos y Actividades Anuales
-          </h2>
-          <p className="text-gray-700 max-w-2xl mx-auto">
-            Durante todo el año, Monteros se viste de fiesta con eventos que celebran
-            nuestra cultura, tradiciones y el espíritu aventurero de nuestra gente.
-          </p>
-        </div>
+    <section id="actividades" className="relative overflow-hidden bg-white py-20 px-4">
+      <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.45]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-stone-50/90 to-white" />
+      <div className="relative mx-auto max-w-6xl">
+        <SectionHeading eyebrow="Agenda" title="Eventos y actividades anuales">
+          Durante todo el año, Monteros se viste de fiesta con eventos que celebran
+          nuestra cultura, tradiciones y el espíritu aventurero de nuestra gente.
+        </SectionHeading>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {activities.map((activity, index) => (
-            <Card key={index} className="overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="relative h-48">
+            <Card
+              key={index}
+              className="group overflow-hidden border border-stone-200/80 bg-white/90 shadow-sm transition-shadow duration-300 hover:border-emerald-200/90 hover:shadow-xl hover:shadow-stone-900/5"
+            >
+              <div className="relative h-52 overflow-hidden">
                 <ImageWithFallback
                   src={activity.image}
                   alt={activity.title}
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
-                <div className="absolute top-4 right-4 bg-[var(--primary)] text-primary-foreground px-3 py-1 rounded-full text-sm">
+                <div className="absolute top-4 right-4 rounded-full bg-[var(--primary)] px-3.5 py-1 font-sans text-xs font-semibold uppercase tracking-wide text-[var(--primary-foreground)] shadow-md">
                   {activity.month}
                 </div>
               </div>
-              <CardHeader className='p-4 font-bold'>
-                <h2 className="text-black">{activity.title}</h2>
+              <CardHeader className="flex flex-col items-start gap-1 px-5 pb-0 pt-5">
+                <h3 className="font-display text-xl font-semibold text-stone-900">{activity.title}</h3>
               </CardHeader>
-              <CardBody className='p-4'>
-                <p className="text-gray-700">
+              <CardBody className="px-5 pb-6 pt-2">
+                <p className="font-sans text-[15px] leading-relaxed text-stone-600">
                   {activity.description}
                 </p>
               </CardBody>

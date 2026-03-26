@@ -9,7 +9,7 @@ import IngenioSeccion from "@/Components/IngenioSeccion";
 
 export default function Home() {
   return (
-    <main className="w-full h-full relative overflow-hidden">
+    <main className="relative min-h-screen w-full overflow-x-hidden">
 
       <HomeSeccion />
 
