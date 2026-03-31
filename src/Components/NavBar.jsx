@@ -93,6 +93,11 @@ const NavBar = () => {
                             </a>
                         </li>
                         <li>
+                            <Link href="/lugares" className="block rounded-lg px-3 py-2.5 font-sans text-stone-800 hover:bg-stone-100" onClick={() => setOpenMenu(false)}>
+                                Lugares históricos
+                            </Link>
+                        </li>
+                        <li>
                             <a href="/#footer" className="block rounded-lg px-3 py-2.5 font-sans text-stone-800 hover:bg-stone-100" onClick={() => setOpenMenu(false)}>
                                 Contacto
                             </a>
@@ -111,6 +116,11 @@ const NavBar = () => {
                             <a href="/#razones" className={linkClass}>
                                 ¿Qué hacer?
                             </a>
+                        </li>
+                        <li>
+                            <Link href="/lugares" className={linkClass}>
+                                Lugares históricos
+                            </Link>
                         </li>
                         <li>
                             <a href="/#footer" className={linkClass}>
