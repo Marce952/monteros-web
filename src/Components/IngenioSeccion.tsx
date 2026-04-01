@@ -1,85 +1,107 @@
 import React from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { Card, CardBody, CardHeader } from '@nextui-org/react';
 import SectionHeading from './SectionHeading';
+import Link from 'next/link';
 
 export default function IngenioSeccion() {
   return (
     <section className="relative border-t border-stone-200/80 bg-gradient-to-b from-stone-100 to-stone-50 py-20 px-4">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Identidad" title="Orgullo de Monteros">
-          Conocé los dos íconos que representan el corazón industrial y deportivo
-          de nuestra querida ciudad.
+        <SectionHeading eyebrow="Identidad" title="El alma de Monteros">
+          Dos emblemas que explican quiénes somos: el azúcar que endulzó al país
+          y la artesanía más singular del mundo.
         </SectionHeading>
 
         <div className="grid gap-10 md:grid-cols-2 md:gap-12">
-          <Card className="group overflow-hidden border border-stone-200/90 bg-white shadow-sm transition hover:shadow-xl">
+          {/* Ingenio azucarero */}
+          <Link
+            href="/lugares/ingenio-azucarero"
+            className="group overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:border-emerald-200 hover:shadow-xl"
+          >
             <div className="relative h-64 overflow-hidden">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1607980276836-232ac6344978?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdWdhciUyMGZhY3RvcnklMjBpbmR1c3RyaWFsfGVufDF8fHx8MTc1NTUyNTUxNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Ingenio Ñuñorco"
+                src="/img/Monteros2.jpg"
+                alt="Ingenios azucareros de Monteros"
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <span className="absolute bottom-4 left-5 font-display text-xl font-semibold text-white">
+                Ingenios Azucareros
+              </span>
             </div>
-            <CardHeader className="flex flex-col items-center px-5 pt-6">
-              <h3 className="font-display text-xl font-semibold text-stone-900">Ingenio Ñuñorco</h3>
-            </CardHeader>
-            <CardBody className="px-5 pb-6 pt-0">
-              <p className="font-sans mt-2 text-[15px] leading-relaxed text-stone-600">
-                El corazón industrial de Monteros, el Ingenio Ñuñorco es una de las fábricas
-                azucareras más importantes de la región. Fundado en 1876, ha sido motor
-                económico y fuente de trabajo para generaciones de monterenses.
+            <div className="px-6 py-5">
+              <p className="font-sans text-[15px] leading-relaxed text-stone-600">
+                Monteros es parte del corazón azucarero de Tucumán, la provincia que produce
+                el 65% del azúcar de Argentina. El Ingenio La Providencia, fundado en 1882,
+                y el Ingenio Ñuñorco son parte del patrimonio industrial y cultural de la ciudad.
               </p>
-              <dl className="font-sans mt-6 space-y-3 border-t border-stone-200 pt-5 text-sm">
+              <dl className="font-sans mt-5 space-y-2.5 border-t border-stone-100 pt-4 text-sm">
                 <div className="flex justify-between gap-4">
-                  <dt className="font-medium text-stone-800">Fundación</dt>
-                  <dd className="text-stone-600">1876</dd>
+                  <dt className="font-medium text-stone-800">Ing. La Providencia fundado</dt>
+                  <dd className="text-stone-600">1882–1884</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="font-medium text-stone-800">Actividad</dt>
-                  <dd className="text-stone-600">Producción azucarera</dd>
+                  <dt className="font-medium text-stone-800">Producción provincial</dt>
+                  <dd className="text-stone-600">+65% del azúcar del país</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="font-medium text-stone-800">Empleados</dt>
-                  <dd className="text-stone-600">+500 familias</dd>
+                  <dt className="font-medium text-stone-800">Período de zafra</dt>
+                  <dd className="text-stone-600">Mayo – octubre</dd>
                 </div>
               </dl>
-            </CardBody>
-          </Card>
+              <div className="mt-4 flex items-center gap-1 font-sans text-sm font-semibold text-[var(--primary)]">
+                Conocé la historia completa
+                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </Link>
 
-          <Card className="group overflow-hidden border border-stone-200/90 bg-white shadow-sm transition hover:shadow-xl">
+          {/* La Randa */}
+          <Link
+            href="/lugares/la-randa"
+            className="group overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:border-emerald-200 hover:shadow-xl"
+          >
             <div className="relative h-64 overflow-hidden">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1596209949637-c7070e120863?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHN0YWRpdW0lMjBhcmdlbnRpbmF8ZW58MXx8fHwxNzU1NTI1NTE2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Estadio Ñuñorco"
+                src="/img/feria de artesanias.jpg"
+                alt="La Randa – artesanía única en el mundo"
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <span className="absolute bottom-4 left-5 font-display text-xl font-semibold text-white">
+                La Randa
+              </span>
             </div>
-            <CardHeader className="flex flex-col items-center px-5 pt-6">
-              <h3 className="font-display text-xl font-semibold text-stone-900">Estadio Ñuñorco</h3>
-            </CardHeader>
-            <CardBody className="px-5 pb-6 pt-0">
-              <p className="font-sans mt-2 text-[15px] leading-relaxed text-stone-600">
-                Hogar del Club Atlético Ñuñorco, nuestro querido equipo de fútbol que
-                representa con orgullo los colores de Monteros. El estadio es punto de
-                encuentro y celebración para toda la comunidad deportiva.
+            <div className="px-6 py-5">
+              <p className="font-sans text-[15px] leading-relaxed text-stone-600">
+                Única artesanía textil de su tipo en el mundo, producida desde 1565 en la localidad
+                de El Cercado. Unas 50 randeras sostienen esta tradición de 350 años, postulada
+                ante la UNESCO. Monteros es la Capital Nacional de la Randa.
               </p>
-              <dl className="font-sans mt-6 space-y-3 border-t border-stone-200 pt-5 text-sm">
+              <dl className="font-sans mt-5 space-y-2.5 border-t border-stone-100 pt-4 text-sm">
                 <div className="flex justify-between gap-4">
-                  <dt className="font-medium text-stone-800">Equipo</dt>
-                  <dd className="text-right text-stone-600">Club Atlético Ñuñorco</dd>
+                  <dt className="font-medium text-stone-800">Origen</dt>
+                  <dd className="text-stone-600">Ibatín, 1565</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="font-medium text-stone-800">Capacidad</dt>
-                  <dd className="text-stone-600">8.000 espectadores</dd>
+                  <dt className="font-medium text-stone-800">Randeras activas</dt>
+                  <dd className="text-stone-600">~50</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="font-medium text-stone-800">Liga</dt>
-                  <dd className="text-stone-600">Torneo Regional</dd>
+                  <dt className="font-medium text-stone-800">Reconocimiento</dt>
+                  <dd className="text-right text-stone-600">Postulada ante UNESCO</dd>
                 </div>
               </dl>
-            </CardBody>
-          </Card>
+              <div className="mt-4 flex items-center gap-1 font-sans text-sm font-semibold text-[var(--primary)]">
+                Conocé la historia completa
+                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </section>

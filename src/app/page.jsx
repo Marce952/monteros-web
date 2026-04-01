@@ -1,4 +1,3 @@
-
 'use client'
 import Footer from "@/Components/Footer";
 import HomeSeccion from "@/Components/HomeSeccion";
@@ -6,6 +5,7 @@ import ActivitiesSeccion from "@/Components/ActivitiesSeccion";
 import ReasonsSeccion from "@/Components/ReasonsSeccion";
 import GallerySeccion from "@/Components/GallerySeccion";
 import IngenioSeccion from "@/Components/IngenioSeccion";
+import LugaresDestacados from "@/Components/LugaresDestacados";
 
 export default function Home() {
   return (
@@ -15,13 +15,15 @@ export default function Home() {
 
       <ActivitiesSeccion />
 
+      <LugaresDestacados />
+
       <ReasonsSeccion />
 
       <GallerySeccion />
 
       <IngenioSeccion />
 
-      <Footer></Footer>
+      <Footer />
     </main>
   );
 }

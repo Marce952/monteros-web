@@ -1,77 +1,67 @@
 import React from 'react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import SectionHeading from './SectionHeading';
+import Link from 'next/link';
+
+const fotos = [
+  { src: '/img/Monteros3.jpg', alt: 'Naturaleza y montañas de Monteros', span: 'col-span-2 row-span-2' },
+  { src: '/img/Iglesias/Nta Señora del rosario.jpg', alt: 'Iglesia Nuestra Señora del Rosario' },
+  { src: '/img/festival del folclore.jpg', alt: 'Festival de Folklore de Monteros' },
+  { src: '/img/El indio.jpg', alt: 'Monumento al Indio – Reserva Los Sosa' },
+  { src: '/img/plaza.jpg', alt: 'Plaza Bernabé Aráoz' },
+  { src: '/img/feria de artesanias.jpg', alt: 'Feria de Artesanías – La Randa' },
+  { src: '/img/Monteros2.jpg', alt: 'Monteros, Tucumán' },
+];
 
 export default function GallerySection() {
-  const photos = [
-    {
-      src: "https://images.unsplash.com/photo-1520751256043-b5735693d741?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcmdlbnRpbmElMjBsYW5kc2NhcGUlMjBtb3VudGFpbnN8ZW58MXx8fHwxNzU1NTI1NTE2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      alt: "Paisajes de Monteros"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1700677644011-bc36f86937ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvbmlhbCUyMGFyY2hpdGVjdHVyZSUyMGFyZ2VudGluYXxlbnwxfHx8fDE3NTU1MjU1MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      alt: "Arquitectura colonial"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1627904198534-29888654686c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcmdlbnRpbmElMjBmb2xrJTIwZmVzdGl2YWwlMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3NTU1MjU1MTN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      alt: "Festival de folclore"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1724709166740-96947d362a17?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW5kaWNyYWZ0cyUyMGFydGlzYW4lMjBtYXJrZXR8ZW58MXx8fHwxNzU1NTI1NTE1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      alt: "Artesanías locales"
-    }
-  ];
-
   return (
-    <section className="relative bg-white py-20 px-4">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Imágenes" title="Galería de Monteros">
-          Explorá la belleza de nuestra ciudad a través de imágenes y video que capturan
-          la esencia de Monteros en cada momento.
+    <section className="relative bg-stone-950 py-20 px-4 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(21,128,61,0.08),transparent_65%)]" />
+      <div className="relative mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow="Galería"
+          title="Monteros en imágenes"
+          className="[&_p]:text-stone-400 [&_h2]:text-white [&_.eyebrow]:text-amber-400"
+        >
+          <span className="text-stone-400">
+            Naturaleza, historia, fe y tradición capturadas en cada rincón de la ciudad.
+          </span>
         </SectionHeading>
 
-        <div className="mb-12 grid gap-10 lg:grid-cols-2 lg:gap-12">
-          <div>
-            <h3 className="font-display mb-4 text-center text-xl font-semibold text-stone-900 md:text-left">
-              Video promocional
-            </h3>
-            <div className="overflow-hidden rounded-2xl border border-stone-200 bg-stone-50 shadow-inner">
-              <div className="flex h-[17rem] items-center justify-center bg-gradient-to-br from-emerald-50 via-stone-50 to-amber-50/40">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] shadow-lg shadow-emerald-900/10">
-                    <svg className="ml-1 h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                  <p className="font-sans text-stone-600">
-                    Video de Monteros
-                    <br />
-                    <span className="text-sm text-stone-500">Próximamente disponible</span>
-                  </p>
-                </div>
-              </div>
-            </div>
+        {/* Grid masonry-style */}
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          {/* Foto grande: ocupa 2x2 en md */}
+          <div className="col-span-2 row-span-2 overflow-hidden rounded-2xl md:col-span-2 md:row-span-2">
+            <img
+              src={fotos[0].src}
+              alt={fotos[0].alt}
+              className="h-full w-full object-cover transition duration-500 hover:scale-105"
+              style={{ minHeight: '280px' }}
+            />
           </div>
+          {/* Resto de fotos */}
+          {fotos.slice(1).map((foto, i) => (
+            <div key={i} className="overflow-hidden rounded-2xl">
+              <img
+                src={foto.src}
+                alt={foto.alt}
+                className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                style={{ minHeight: '130px', maxHeight: '200px' }}
+              />
+            </div>
+          ))}
+        </div>
 
-          <div>
-            <h3 className="font-display mb-4 text-center text-xl font-semibold text-stone-900 md:text-left">
-              Fotos de la ciudad
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              {photos.map((photo, index) => (
-                <div
-                  key={index}
-                  className="group relative overflow-hidden rounded-xl border border-stone-200/80 shadow-sm"
-                >
-                  <ImageWithFallback
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="h-36 w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* CTA */}
+        <div className="mt-10 text-center">
+          <Link
+            href="/lugares"
+            className="font-sans inline-flex items-center gap-2 rounded-xl border border-emerald-700/60 bg-emerald-950/40 px-6 py-3 text-sm font-semibold text-emerald-300 backdrop-blur-sm transition hover:bg-emerald-900/60 hover:text-white"
+          >
+            Explorá cada lugar con su historia completa
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>
