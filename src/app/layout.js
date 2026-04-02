@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="es" className={`${fraunces.variable} ${dmSans.variable}`}>
       <body className="min-h-screen bg-stone-50 font-sans">
         <Providers>
-          <NavBar />
+          {/* <NavBar /> */}
           {children}
         </Providers>
       </body>
