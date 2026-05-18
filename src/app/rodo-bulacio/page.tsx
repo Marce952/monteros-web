@@ -224,7 +224,7 @@ export default function RodoBulacioLanding() {
                         alt={obra.titulo}
                         className="w-full h-full object-cover"
                       />
-                      {!isActive && <div className="absolute inset-0 bg-black/40" />}
+                      {!isActive && <div className="absolute inset-0 bg-black/40"></div>}
                     </motion.div>
                   );
                 })}
@@ -310,7 +310,7 @@ export default function RodoBulacioLanding() {
                     className={`flex items-center gap-4 text-xs uppercase tracking-[0.2em] text-gray-500 mb-8 ${outfit.className}`}
                   >
                     <span>{obra.anio}</span>
-                    <span className="w-px h-3 bg-gray-700" />
+                    <span className="w-px h-3 bg-gray-700"></span>
                     <span>{obra.tecnica}</span>
                   </motion.div>
 
@@ -327,7 +327,7 @@ export default function RodoBulacioLanding() {
 
                   {/* Separador inferior (no en el último) */}
                   {i < obrasMaestras.length - 1 && (
-                    <div className="mt-16 h-px w-16 bg-[#FFA500]/20" />
+                    <div className="mt-16 h-px w-16 bg-[#FFA500]/20"></div>
                   )}
                 </motion.div>
               ))}
@@ -428,8 +428,8 @@ export default function RodoBulacioLanding() {
                 hover:shadow-[0_24px_48px_-12px_rgba(255,165,0,0.1),0_0_80px_-30px_rgba(255,165,0,0.08)]
                 hover:bg-white/[0.04] transition-all duration-500 group
               ">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.15] to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.15] to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none"></div>
                 <motion.span
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -457,7 +457,7 @@ export default function RodoBulacioLanding() {
                     <ArrowRight size={14} weight="light" />
                   </div>
                 </Magnetic>
-                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#FFA500]/60 to-transparent transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#FFA500]/60 to-transparent transition-all duration-700"></div>
               </div>
             </motion.div>
 
@@ -470,8 +470,8 @@ export default function RodoBulacioLanding() {
                 hover:ring-[#FFA500]/20 hover:shadow-[0_24px_48px_-12px_rgba(255,165,0,0.1)]
                 hover:bg-white/[0.04] transition-all duration-500 group
               ">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.15] to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.15] to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none"></div>
                 <motion.span
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
@@ -490,7 +490,7 @@ export default function RodoBulacioLanding() {
                     Exhibiciones<br />Temporales
                   </h3>
                 </div>
-                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#FFA500]/60 to-transparent transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#FFA500]/60 to-transparent transition-all duration-700"></div>
               </div>
             </motion.div>
 
@@ -504,8 +504,8 @@ export default function RodoBulacioLanding() {
                 hover:shadow-[0_24px_48px_-12px_rgba(255,165,0,0.15),0_0_60px_-10px_rgba(255,165,0,0.12)]
                 hover:bg-[#FFA500]/[0.06] transition-all duration-500 group
               ">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FFA500]/25 to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#FFA500]/[0.04] to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FFA500]/25 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-[#FFA500]/[0.04] to-transparent pointer-events-none"></div>
                 <motion.span
                   animate={{ y: [0, -5, 0], opacity: [0.07, 0.13, 0.07] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.1 }}
@@ -524,7 +524,7 @@ export default function RodoBulacioLanding() {
                     El<br />Taller
                   </h3>
                 </div>
-                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#FFA500] to-transparent transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#FFA500] to-transparent transition-all duration-700"></div>
               </div>
             </motion.div>
           </motion.div>
@@ -555,7 +555,7 @@ export default function RodoBulacioLanding() {
         </div>
 
         {/* Separador */}
-        <div className="h-px bg-[#FFA500]/15" />
+        <div className="h-px bg-[#FFA500]/15"></div>
 
         {/* Franja negra — texto naranja mediano hacia la derecha */}
         <div className="bg-black py-4 select-none">
