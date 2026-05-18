@@ -6,6 +6,7 @@ import ReasonsSeccion from "@/Components/ReasonsSeccion";
 import GallerySeccion from "@/Components/GallerySeccion";
 import IngenioSeccion from "@/Components/IngenioSeccion";
 import LugaresDestacados from "@/Components/LugaresDestacados";
+import RodoBulacioSeccion from "@/Components/RodoBulacioSeccion";
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       <ReasonsSeccion />
 
       <GallerySeccion />
+
+      <RodoBulacioSeccion />
 
       <IngenioSeccion />
 

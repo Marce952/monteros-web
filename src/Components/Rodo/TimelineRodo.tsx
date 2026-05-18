@@ -92,32 +92,27 @@ const TimelineRodo = () => {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div className="relative z-30 px-8 md:px-16 flex-1 flex flex-col justify-center max-w-xl my-16 md:my-0">
-        <div className="relative h-[280px] md:h-[300px]">
-          {timelineData.map((item, idx) => (
-            <div
-              key={idx}
-              className={`absolute inset-0 flex flex-col justify-center transition-all duration-[800ms] ease-out ${activeIdx === idx ? 'opacity-100 translate-y-0 pointer-events-auto z-10' : 'opacity-0 translate-y-8 pointer-events-none z-0'
-                }`}
-            >
-              <div className={`inline-block bg-[#FFA500] text-black text-[10px] sm:text-xs font-bold px-3 py-1 mb-6 uppercase tracking-widest w-max ${dmSans.className}`}>
-                Obra Destacada
-              </div>
-              <h2 className={`text-3xl md:text-5xl text-white mb-4 ${fraunces.className} drop-shadow-md`}>
-                {item.title}
-              </h2>
-              <h3 className={`text-[#FFA500] text-sm md:text-lg mb-6 ${dmSans.className} tracking-wide`}>
-                {item.date}
-              </h3>
-              <p className={`text-gray-300 text-sm md:text-base leading-relaxed mb-8 max-w-sm md:max-w-md ${dmSans.className} drop-shadow-lg`}>
-                {item.desc}
-              </p>
-              <a href="#" className={`text-[#FFA500] text-sm md:text-base underline underline-offset-8 decoration-[#FFA500]/50 hover:decoration-[#FFA500] hover:text-white transition-colors w-max font-medium ${dmSans.className}`}>
-                Leer más
-              </a>
+      <div className="relative z-30 px-8 md:px-16 flex-1 flex flex-col justify-center max-w-xl my-8 md:my-0">
+        {timelineData.map((item, idx) => (
+          <div
+            key={idx}
+            className={`flex flex-col justify-center transition-all duration-[800ms] ease-out ${activeIdx === idx ? 'opacity-100 translate-y-0 pointer-events-auto relative' : 'opacity-0 translate-y-8 pointer-events-none absolute inset-0'
+              }`}
+          >
+            <div className={`inline-block bg-[#FFA500] text-black text-[10px] sm:text-xs font-bold px-3 py-1 mb-4 md:mb-6 uppercase tracking-widest w-max ${dmSans.className}`}>
+              Obra Destacada
             </div>
-          ))}
-        </div>
+            <h2 className={`text-2xl sm:text-3xl md:text-5xl text-white mb-3 md:mb-4 ${fraunces.className} drop-shadow-md`}>
+              {item.title}
+            </h2>
+            <h3 className={`text-[#FFA500] text-sm md:text-lg mb-4 md:mb-6 ${dmSans.className} tracking-wide`}>
+              {item.date}
+            </h3>
+            <p className={`text-gray-300 text-sm md:text-base leading-relaxed max-w-sm md:max-w-md ${dmSans.className} drop-shadow-lg`}>
+              {item.desc}
+            </p>
+          </div>
+        ))}
       </div>
 
       {/* BOTTOM TIMELINE */}

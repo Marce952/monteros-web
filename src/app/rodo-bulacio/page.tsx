@@ -7,6 +7,7 @@ import { Fraunces, DM_Sans } from 'next/font/google';
 import HeroRodo from '@/Components/Rodo/HeroRodo';
 import BiographyRodo from '@/Components/Rodo/BiographyRodo';
 import TimelineRodo from '@/Components/Rodo/TimelineRodo';
+import ArtisticStagesGallery from '@/Components/Rodo/ArtisticStagesGallery';
 import VideoRodo from '@/Components/Rodo/VideoRodo';
 
 const fraunces = Fraunces({ subsets: ['latin'], weight: ['400', '700'] });
@@ -46,41 +47,7 @@ export default function RodoBulacioLanding() {
       {/* Timeline / Obra Destacada (Horizontal Slider) */}
       <TimelineRodo />
 
-      {/* Galería Visual */}
-      <section id="galeria" className="py-32 px-6 md:px-20 bg-[#050505]">
-        <div className="max-w-7xl mx-auto">
-          <FadeIn>
-            <h2 className={`text-3xl md:text-5xl font-bold mb-16 text-center uppercase tracking-widest text-[#FFA500] ${fraunces.className}`}>
-              Galería
-            </h2>
-          </FadeIn>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              "/img/rodo/gallery/4.webp",
-              "/img/rodo/gallery/15munt_bulaciomarzo.webp",
-              "/img/rodo/gallery/16.webp",
-              "/img/rodo/gallery/19.webp",
-              "/img/rodo/gallery/19munt_bulaciomarzo.webp",
-              "/img/rodo/gallery/22.webp",
-              "/img/rodo/gallery/pintura-morada.webp",
-            ].map((url, i) => (
-              <FadeIn key={i} delay={i * 0.1} className={`relative overflow-hidden group ${i === 0 || i === 3 ? "col-span-2 row-span-2" : ""}`}>
-                <div className="max-h-full h-full aspect-square w-full">
-                  <img
-                    src={url}
-                    alt={`Obra de arte ${i + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="text-white tracking-widest text-sm uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Ver Obra</span>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ArtisticStagesGallery />
 
       {/* El Museo */}
       <section id="museo" className="py-32 px-6 md:px-20 border-t border-[#111]">
@@ -120,7 +87,7 @@ export default function RodoBulacioLanding() {
               }
             ].map((item, idx) => (
               <FadeIn key={idx} delay={0.2 + idx * 0.2}>
-                <div className="bg-[#0a0a0a] border border-[#222] p-8 h-full hover:border-[#FFA500] hover:bg-[#111] transition-all duration-300 group cursor-pointer flex flex-col">
+                <div className="bg-[#0a0a0a] border border-[#222] p-8 h-full flex flex-col">
                   <div className="text-[#FFA500] mb-6 transform group-hover:-translate-y-2 transition-transform duration-300">
                     {item.icon}
                   </div>
