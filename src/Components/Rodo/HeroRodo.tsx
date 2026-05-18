@@ -19,7 +19,7 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 
 const HeroRodo = () => {
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-between px-8 md:px-16 overflow-hidden bg-[#111] pt-40 pb-16">
+    <section className="relative w-full min-h-[100dvh] flex flex-col justify-between px-8 md:px-16 overflow-hidden bg-[#111] pt-40 pb-16">
 
       {/* Definición de Filtro SVG para Bordes Rasgados/Papel Roto */}
       <svg width="0" height="0" className="absolute">
