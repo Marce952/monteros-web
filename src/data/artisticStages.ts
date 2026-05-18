@@ -1,6 +1,7 @@
 export type ArtisticStage = {
   id: string;
   name: string;
+  period: string;
   color: string;
   textColor: string;
   plaqueStyle: 'dark' | 'light';
@@ -12,6 +13,7 @@ export const artisticStages: ArtisticStage[] = [
   {
     id: 'crisalida-formacion',
     name: 'Crisálida formación',
+    period: '1970 — 1991',
     color: '#F2E4A8',
     textColor: '#1a1a1a',
     plaqueStyle: 'dark',
@@ -26,6 +28,7 @@ export const artisticStages: ArtisticStage[] = [
   {
     id: 'rosa-metamorfosis',
     name: 'Rosa Metamorfosis',
+    period: '1991 — 1995',
     color: '#E8A4B8',
     textColor: '#1a1a1a',
     plaqueStyle: 'light',
@@ -40,6 +43,7 @@ export const artisticStages: ArtisticStage[] = [
   {
     id: 'periodo-azul',
     name: 'Período Azul',
+    period: '1996',
     color: '#A8D4E8',
     textColor: '#1a1a1a',
     plaqueStyle: 'light',
@@ -54,12 +58,14 @@ export const artisticStages: ArtisticStage[] = [
   {
     id: 'la-despedida',
     name: 'La despedida',
+    period: '1997',
     color: '#0a0a0a',
     textColor: '#f5f5f5',
     plaqueStyle: 'dark',
     description:
       'A comienzos del año 1997 Rodolfo vivía un momento de intensa producción; mientras reciclaba marcos de fotografías antiguas, armaba bastidores y preparaba la entrega final del taller V de grabado a cargo de la profesora Lia Rojas Paz. Había futuro. Había obras en proceso. La noche del 10 de marzo la muerte lo sorprende cuando un grupo de cuatro delincuentes perpetra un crimen de odio en contra de su orientación sexual, poniendo fin a su vida; en un intento de ocultar el crimen, los agresores incendian el departamento en el que habitó los últimos años de su corta y prolífica carrera artística. Su obra permanece. Persiste en las imágenes, las líneas, los gestos, el color, lo kitsch y los iconos de la cultura pop; así su legado se expande en quienes lo recuerdan y en quienes hoy lo descubren, en este espacio destinado al arte para resguardar y celebrar su memoria creativa. Su vida fue arte.',
     images: [
+      { src: '/img/rodo/rodo-taller.png', alt: 'Taller y producción final' },
       { src: '/img/rodo/gallery/15munt_bulaciomarzo.webp', alt: 'Obra expuesta en el museo' },
       { src: '/img/rodo/gallery/19.webp', alt: 'Legado artístico de Rodolfo Bulacio' },
       { src: '/img/rodo/gallery/19munt_bulaciomarzo.webp', alt: 'Muestra en honor a Rodo Bulacio' },

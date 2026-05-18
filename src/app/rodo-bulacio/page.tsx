@@ -18,6 +18,7 @@ import {
   ArrowRight,
 } from '@phosphor-icons/react';
 import { Fraunces, Outfit } from 'next/font/google';
+import Link from 'next/link';
 import HeroRodo from '@/Components/Rodo/HeroRodo';
 import BiographyRodo from '@/Components/Rodo/BiographyRodo';
 import TimelineRodo from '@/Components/Rodo/TimelineRodo';
@@ -418,9 +419,9 @@ export default function RodoBulacioLanding() {
             viewport={{ once: true, margin: "-80px" }}
             className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4"
           >
-            {/* Sala Principal */}
+            {/* Sala Principal — guía por etapas de color */}
             <motion.div variants={staggerCard} className="md:col-span-2 md:row-span-2">
-              <div className="
+              <Link href="/rodo-bulacio/museo" className="
                 relative p-10 h-full min-h-[360px] cursor-pointer flex flex-col justify-between overflow-hidden
                 bg-white/[0.025] backdrop-blur-sm ring-1 ring-inset ring-white/[0.07]
                 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.85)]
@@ -448,17 +449,17 @@ export default function RodoBulacioLanding() {
                     Sala<br />Principal
                   </h3>
                   <p className={`text-gray-400 font-light leading-relaxed max-w-sm text-sm ${outfit.className}`}>
-                    Colección permanente de las obras más emblemáticas de Bulacio, agrupadas por su etapa de creación.
+                    Guía de visita por colores: cada sala explica una etapa de su vida y muestra las obras de ese período.
                   </p>
                 </div>
                 <Magnetic strength={0.28} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-8 w-fit">
                   <div className={`flex items-center gap-2 text-[#FFA500] ${outfit.className}`}>
-                    <span className="uppercase tracking-[0.15em] text-xs font-medium">Explorar</span>
+                    <span className="uppercase tracking-[0.15em] text-xs font-medium">Ver guía de salas</span>
                     <ArrowRight size={14} weight="light" />
                   </div>
                 </Magnetic>
-                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#FFA500]/60 to-transparent transition-all duration-700"></div>
-              </div>
+                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#FFA500]/60 to-transparent transition-all duration-700" />
+              </Link>
             </motion.div>
 
             {/* Exhibiciones */}
