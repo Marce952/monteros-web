@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback } from 'react';
 import {
   motion,
   useMotionValue,
@@ -154,11 +154,79 @@ const NoiseOverlay = ({ id }: { id: string }) => (
   </svg>
 );
 
+type ObraMaestra = (typeof obrasMaestras)[number];
+
+const ObraMaestraPanel = ({
+  obra,
+  index,
+  isLast,
+  fraunces,
+  outfit,
+}: {
+  obra: ObraMaestra;
+  index: number;
+  isLast: boolean;
+  fraunces: { className: string };
+  outfit: { className: string };
+}) => (
+  <article className={`py-16 md:py-24 ${!isLast ? 'border-b border-[#1a1a1a]' : ''}`}>
+    <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ type: 'spring', stiffness: 60, damping: 20 }}
+        className={`relative aspect-[4/5] overflow-hidden rounded-sm bg-[#111] ${
+          index % 2 === 1 ? 'md:order-2' : ''
+        }`}
+      >
+        <img
+          src={obra.src}
+          alt={obra.titulo}
+          className="w-full h-full object-cover"
+          loading={index === 0 ? 'eager' : 'lazy'}
+        />
+        <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+          <p className={`text-[#FFA500] text-[10px] uppercase tracking-[0.2em] mb-1 ${outfit.className}`}>
+            {obra.tecnica}
+          </p>
+          <p className={`text-white/50 text-[10px] ${outfit.className}`}>{obra.dimensiones}</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.08 }}
+        className={index % 2 === 1 ? 'md:order-1' : ''}
+      >
+        <p
+          className={`text-[#FFA500]/40 text-[4rem] md:text-[5rem] font-black leading-none mb-4 select-none ${fraunces.className}`}
+        >
+          {obra.numero}
+        </p>
+        <h3 className={`text-3xl md:text-4xl font-bold tracking-tight mb-2 ${fraunces.className}`}>
+          {obra.titulo}
+        </h3>
+        <div
+          className={`flex flex-wrap items-center gap-x-4 gap-y-1 text-xs uppercase tracking-[0.2em] text-gray-500 mb-6 ${outfit.className}`}
+        >
+          <span>{obra.anio}</span>
+          <span className="hidden sm:block w-px h-3 bg-gray-700" aria-hidden />
+          <span>{obra.tecnica}</span>
+        </div>
+        <p className={`text-gray-400 font-light leading-[1.8] text-base md:text-[15px] ${outfit.className}`}>
+          {obra.descripcion}
+        </p>
+      </motion.div>
+    </motion.div>
+  </article>
+);
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function RodoBulacioLanding() {
-  const [obraActiveIdx, setObraActiveIdx] = useState(0);
-
   // Parallax para el text mask reveal de Galería
   const galeriaRef = useRef<HTMLElement>(null);
   const { scrollYProgress: galeriaProgress } = useScroll({
@@ -182,157 +250,29 @@ export default function RodoBulacioLanding() {
       <BiographyRodo />
       <TimelineRodo />
 
-      {/* ── Obras Maestras — Sticky Scroll Stack ─────────────────────────── */}
-      <section id="obras-maestras" className="relative py-24 px-6 md:px-20 bg-[#060606] border-t border-[#111] overflow-hidden">
+      {/* ── Obras Maestras ─────────────────────────────────────────────────── */}
+      <section id="obras-maestras" className="relative py-24 px-6 md:px-20 bg-[#060606] border-t border-[#111]">
         <NoiseOverlay id="noise-obras" />
 
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <FadeIn className="mb-20">
+          <FadeIn className="mb-16 md:mb-20">
             <p className={`text-xs uppercase tracking-[0.3em] text-[#FFA500] mb-4 ${outfit.className}`}>Colección permanente</p>
             <h2 className={`text-5xl md:text-7xl font-bold tracking-tight ${fraunces.className}`}>
               Obras<br /><span className="text-[#FFA500]">Maestras</span>
             </h2>
           </FadeIn>
 
-          {/* Stack + Scroll layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
-
-            {/* Columna izquierda — sticky con la pila de imágenes */}
-            <div className="hidden md:block sticky top-8 h-[calc(100dvh-4rem)]">
-              <div className="relative w-full h-full rounded-sm overflow-hidden">
-
-                {/* Pila de imágenes con spring physics */}
-                {obrasMaestras.map((obra, i) => {
-                  const diff = obraActiveIdx - i;
-                  if (diff < 0 || diff > 2) return null;
-                  const isActive = diff === 0;
-                  return (
-                    <motion.div
-                      key={obra.src}
-                      className="absolute inset-0 overflow-hidden"
-                      animate={{
-                        x: diff * 12,
-                        y: diff * 12,
-                        scale: 1 - diff * 0.05,
-                        opacity: isActive ? 1 : Math.max(0.3, 1 - diff * 0.32),
-                        zIndex: isActive ? 10 : 10 - diff,
-                      }}
-                      transition={{ type: "spring", stiffness: 50, damping: 20 }}
-                    >
-                      <img
-                        src={obra.src}
-                        alt={obra.titulo}
-                        className="w-full h-full object-cover"
-                      />
-                      {!isActive && <div className="absolute inset-0 bg-black/40"></div>}
-                    </motion.div>
-                  );
-                })}
-
-                {/* Overlay inferior con metadata de la obra activa */}
-                <div className="absolute bottom-0 inset-x-0 z-20 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                  <motion.div
-                    key={obraActiveIdx}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <p className={`text-[#FFA500] text-xs uppercase tracking-[0.2em] mb-1 ${outfit.className}`}>
-                      {obrasMaestras[obraActiveIdx].tecnica}
-                    </p>
-                    <p className={`text-white/50 text-xs ${outfit.className}`}>
-                      {obrasMaestras[obraActiveIdx].dimensiones}
-                    </p>
-                  </motion.div>
-                </div>
-
-                {/* Indicador de progreso */}
-                <div className="absolute top-5 left-5 z-20 flex items-center gap-3">
-                  <span className={`text-[#FFA500] text-xs tracking-wider ${outfit.className}`}>
-                    {String(obraActiveIdx + 1).padStart(2, '0')} / {String(obrasMaestras.length).padStart(2, '0')}
-                  </span>
-                  <div className="flex gap-1">
-                    {obrasMaestras.map((_, i) => (
-                      <motion.div
-                        key={i}
-                        animate={{ width: i === obraActiveIdx ? 28 : 6 }}
-                        transition={{ type: "spring", stiffness: 90, damping: 18 }}
-                        className={`h-[2px] rounded-full ${i === obraActiveIdx ? 'bg-[#FFA500]' : 'bg-white/25'}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Columna derecha — paneles de scroll con texto curatorial */}
-            <div>
-              {obrasMaestras.map((obra, i) => (
-                <motion.div
-                  key={i}
-                  onViewportEnter={() => setObraActiveIdx(i)}
-                  viewport={{ amount: 0.45 }}
-                  className="min-h-[100dvh] flex flex-col justify-center py-20"
-                >
-                  {/* Imagen visible solo en mobile */}
-                  <div className="block md:hidden mb-8 h-72 overflow-hidden rounded-sm">
-                    <img src={obra.src} alt={obra.titulo} className="w-full h-full object-cover" />
-                  </div>
-
-                  {/* Número editorial */}
-                  <motion.p
-                    initial={{ opacity: 0, x: -16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.05 }}
-                    className={`text-[#FFA500]/40 text-[5rem] font-black leading-none mb-4 select-none ${fraunces.className}`}
-                  >
-                    {obra.numero}
-                  </motion.p>
-
-                  {/* Título */}
-                  <motion.h3
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 65, damping: 18, delay: 0.1 }}
-                    className={`text-4xl md:text-5xl font-bold tracking-tight mb-2 ${fraunces.className}`}
-                  >
-                    {obra.titulo}
-                  </motion.h3>
-
-                  {/* Año y técnica */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.18 }}
-                    className={`flex items-center gap-4 text-xs uppercase tracking-[0.2em] text-gray-500 mb-8 ${outfit.className}`}
-                  >
-                    <span>{obra.anio}</span>
-                    <span className="w-px h-3 bg-gray-700"></span>
-                    <span>{obra.tecnica}</span>
-                  </motion.div>
-
-                  {/* Texto curatorial */}
-                  <motion.p
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 55, damping: 20, delay: 0.22 }}
-                    className={`text-gray-400 font-light leading-[1.8] text-base max-w-md ${outfit.className}`}
-                  >
-                    {obra.descripcion}
-                  </motion.p>
-
-                  {/* Separador inferior (no en el último) */}
-                  {i < obrasMaestras.length - 1 && (
-                    <div className="mt-16 h-px w-16 bg-[#FFA500]/20"></div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+          <div className="flex flex-col">
+            {obrasMaestras.map((obra, i) => (
+              <ObraMaestraPanel
+                key={obra.src}
+                obra={obra}
+                index={i}
+                isLast={i === obrasMaestras.length - 1}
+                fraunces={fraunces}
+                outfit={outfit}
+              />
+            ))}
           </div>
         </div>
       </section>
