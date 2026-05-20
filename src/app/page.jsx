@@ -7,6 +7,7 @@ import GallerySeccion from "@/Components/GallerySeccion";
 import IngenioSeccion from "@/Components/IngenioSeccion";
 import LugaresDestacados from "@/Components/LugaresDestacados";
 import RodoBulacioSeccion from "@/Components/RodoBulacioSeccion";
+import EventsCalendarSeccion from "@/Components/EventsCalendarSeccion";
 
 export default function Home() {
   return (
@@ -15,6 +16,8 @@ export default function Home() {
       <HomeSeccion />
 
       <ActivitiesSeccion />
+
+      <EventsCalendarSeccion />
 
       <LugaresDestacados />
 
